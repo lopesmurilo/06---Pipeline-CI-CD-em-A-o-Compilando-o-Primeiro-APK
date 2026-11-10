@@ -1,0 +1,61 @@
+html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #08080d;
+      color: #f7f7fb;
+    }
+
+    .glass {
+      background: rgba(17, 17, 26, .78);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, .08);
+    }
+
+    .grid-bg {
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(
+        90deg,
+        #c7f000,
+        #ec4899,
+        #8b5cf6
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .card-hover {
+      transition: .25s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-5px);
+      border-color: rgba(139,92,246,.55);
+      box-shadow: 0 15px 40px rgba(0,0,0,.25);
+    }
+
+    .active-nav {
+      color: #c7f000 !important;
+    }
+
+    .hide {
+      display: none !important;
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #292936;
+      border-radius: 99px;
+    }

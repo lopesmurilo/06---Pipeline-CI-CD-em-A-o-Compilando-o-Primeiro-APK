@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+
+  <title>FunkBR — Cultura, História e Som</title>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: "#08080d",
+            panel: "#11111a",
+            violet: "#8b5cf6",
+            pink: "#ec4899",
+            lime: "#c7f000"
+          },
+
+          boxShadow: {
+            neon: "0 0 30px rgba(139,92,246,.25)"
+          }
+        }
+      }
+    }
+  </script>
+
+  
+</head>
+
+<body class="min-h-screen grid-bg">
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header class="sticky top-0 z-50 glass">
+
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 py-3
+                flex items-center justify-between gap-4">
+
+      <!-- LOGO -->
+
+      <button
+        onclick="showPage('home')"
+        class="flex items-center gap-2"
+      >
+
+        <span
+          class="w-10 h-10 rounded-xl
+                 bg-gradient-to-br from-lime to-pink
+                 grid place-items-center
+                 text-black font-black"
+        >
+          FB
+        </span>
+
+        <span class="font-black tracking-tight text-xl">
+          Funk<span class="text-pink">BR</span>
+        </span>
+
+      </button>
+
+
+      <!-- MENU DESKTOP -->
+
+      <div
+        class="hidden md:flex items-center gap-6
+               text-sm text-zinc-400"
+      >
+
+        <button
+          data-nav="home"
+          onclick="showPage('home')"
+          class="nav active-nav"
+        >
+          Início
+        </button>
+
+        <button
+          data-nav="history"
+          onclick="showPage('history')"
+          class="nav"
+        >
+          História
+        </button>
+
+        <button
+          data-nav="artists"
+          onclick="showPage('artists')"
+          class="nav"
+        >
+          Artistas
+        </button>
+
+        <button
+          data-nav="styles"
+          onclick="showPage('styles')"
+          class="nav"
+        >
+          Estilos
+        </button>
+
+        <button
+          data-nav="timeline"
+          onclick="showPage('timeline')"
+          class="nav"
+        >
+          Linha do tempo
+        </button>
+
+        <button
+          data-nav="quiz"
+          onclick="showPage('quiz')"
+          class="nav"
+        >
+          Quiz
+        </button>
+
+      </div>
+
+
+      <!-- BOTÃO MOBILE -->
+
+      <button
+        onclick="toggleMobileMenu()"
+        class="md:hidden p-2 rounded-lg bg-white/5"
+      >
+        ☰
+      </button>
+
+    </nav>
+
+
+    <!-- MENU MOBILE -->
+
+    <div
+      id="mobileMenu"
+      class="hide md:hidden border-t border-white/10 px-4 pb-4"
+    >
+
+      <div class="grid grid-cols-2 gap-2 pt-3 text-sm">
+
+        <button
+          onclick="showPage('home');toggleMobileMenu()"
+          class="p-3 rounded-xl bg-white/5 text-left"
+        >
+          Início
+        </button>
+
+        <button
+          onclick="showPage('history');toggleMobileMenu()"
+          class="p-3 rounded-xl bg-white/5 text-left"
+        >
+          História
+        </button>
+
+        <button
+          onclick="showPage('artists');toggleMobileMenu()"
+          class="p-3 rounded-xl bg-white/5 text-left"
+        >
+          Artistas
+        </button>
+
+        <button
+          onclick="showPage('styles');toggleMobileMenu()"
+          class="p-3 rounded-xl bg-white/5 text-left"
+        >
+          Estilos
+        </button>
+
+        <button
+          onclick="showPage('timeline');toggleMobileMenu()"
+          class="p-3 rounded-xl bg-white/5 text-left"
+        >
+          Linha do tempo
+        </button>
+
+        <button
+          onclick="showPage('quiz');toggleMobileMenu()"
+          class="p-3 rounded-xl bg-white/5 text-left"
+        >
+          Quiz
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       CONTEÚDO
+  ========================== -->
+
+  <main
+    class="max-w-7xl mx-auto px-4 sm:px-6 py-8 md:py-12"
+  >
+
+
+    <!-- =========================
+         HOME
+    ========================== -->
+
+    <section id="page-home" class="page">
+
+      <div
+        class="grid lg:grid-cols-[1.2fr_.8fr]
+               gap-8 items-center min-h-[70vh]"
+      >
+
+        <div>
+
+          <div
+            class="inline-flex items-center gap-2
+                   px-3 py-1.5 rounded-full
+                   bg-lime/10 border border-lime/20
+                   text-lime text-xs font-bold mb-6"
+          >
+
+            <span
+              class="w-2 h-2 rounded-full
+                     bg-lime animate-pulse"
+            ></span>
+
+            CULTURA • HISTÓRIA • SOM
+
+          </div>
+
+
+          <h1
+            class="text-5xl sm:text-7xl
+                   font-black leading-[.95]
+                   tracking-tight"
+          >
+
+            O ritmo que<br>
+
+            <span class="gradient-text">
+              move o Brasil.
+            </span>
+
+          </h1>
+
+
+          <p
+            class="mt-6 text-zinc-400
+                   text-lg max-w-xl leading-relaxed"
+          >
+
+            Conheça a história do funk brasileiro,
+            seus estilos, artistas, transformações
+            e a força cultural que fez o gênero
+            conquistar o país.
+
+          </p>
+
+
+          <div class="flex flex-wrap gap-3 mt-8">
+
+            <button
+              onclick="showPage('history')"
+              class="px-6 py-3 rounded-xl
+                     bg-lime text-black
+                     font-black
+                     hover:scale-[1.02]
+                     transition"
+            >
+              Explorar história →
+            </button>
+
+            <button
+              onclick="showPage('quiz')"
+              class="px-6 py-3 rounded-xl
+                     bg-white/5
+                     border border-white/10
+                     font-bold
+                     hover:bg-white/10
+                     transition"
+            >
+              Fazer o quiz
+            </button>
+
+          </div>
+
+
+          <div
+            class="grid grid-cols-3 gap-3
+                   mt-10 max-w-lg"
+          >
+
+            <div class="glass rounded-2xl p-4">
+
+              <div class="text-2xl font-black">
+                70s
+              </div>
+
+              <div class="text-xs text-zinc-500 mt-1">
+                raízes
+              </div>
+
+            </div>
+
+
+            <div class="glass rounded-2xl p-4">
+
+              <div class="text-2xl font-black">
+                90s
+              </div>
+
+              <div class="text-xs text-zinc-500 mt-1">
+                explosão
+              </div>
+
+            </div>
+
+
+            <div class="glass rounded-2xl p-4">
+
+              <div class="text-2xl font-black">
+                Hoje
+              </div>
+
+              <div class="text-xs text-zinc-500 mt-1">
+                global
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- CARD VISUAL -->
+
+        <div class="relative">
+
+          <div
+            class="absolute -inset-8
+                   bg-violet/20 blur-3xl
+                   rounded-full"
+          ></div>
+
+
+          <div
+            class="relative glass
+                   rounded-[2rem]
+                   p-6 sm:p-8
+                   shadow-neon
+                   overflow-hidden"
+          >
+
+            <div
+              class="absolute -right-20 -top-20
+                     w-48 h-48 rounded-full
+                     bg-pink/20 blur-2xl"
+            ></div>
+
+
+            <div
+              class="flex items-end gap-2
+                     h-56 sm:h-72"
+            >
+
+              <div
+                class="w-full
+                       bg-gradient-to-t
+                       from-violet to-pink
+                       rounded-t-2xl h-[35%]"
+              ></div>
+
+              <div
+                class="w-full
+                       bg-gradient-to-t
+                       from-violet to-lime
+                       rounded-t-2xl h-[62%]"
+              ></div>
+
+              <div
+                class="w-full
+                       bg-gradient-to-t
+                       from-pink to-lime
+                       rounded-t-2xl h-[48%]"
+              ></div>
+
+              <div
+                class="w-full
+                       bg-gradient-to-t
+                       from-violet to-pink
+                       rounded-t-2xl h-[85%]"
+              ></div>
+
+              <div
+                class="w-full
+                       bg-gradient-to-t
+                       from-pink to-lime
+                       rounded-t-2xl h-[55%]"
+              ></div>
+
+              <div
+                class="w-full
+                       bg-gradient-to-t
+                       from-violet to-lime
+                       rounded-t-2xl h-[72%]"
+              ></div>
+
+              <div
+                class="w-full
+                       bg-gradient-to-t
+                       from-pink to-violet
+                       rounded-t-2xl h-[42%]"
+              ></div>
+
+            </div>
+
+
+            <div
+              class="mt-6 flex
+                     justify-between
+                     items-center"
+            >
+
+              <div>
+
+                <p
+                  class="text-xs uppercase
+                         tracking-[.2em]
+                         text-zinc-500"
+                >
+                  FunkBR
+                </p>
+
+                <p class="font-black text-xl">
+                  Batidas que contam histórias
+                </p>
+
+              </div>
+
+              <span class="text-3xl">
+                🔊
+              </span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- EXPLORAR -->
+
+      <section class="py-16">
+
+        <div class="mb-6">
+
+          <p class="text-lime text-sm font-bold">
+            DESCUBRA
+          </p>
+
+          <h2 class="text-3xl font-black mt-1">
+            Explore o universo do funk
+          </h2>
+
+        </div>
+
+
+        <div
+          class="grid sm:grid-cols-2
+                 lg:grid-cols-4 gap-4"
+        >
+
+          <button
+            onclick="showPage('history')"
+            class="glass rounded-2xl p-5
+                   text-left card-hover"
+          >
+
+            <span class="text-3xl">
+              📚
+            </span>
+
+            <h3 class="font-black text-lg mt-5">
+              História
+            </h3>
+
+            <p class="text-sm text-zinc-500 mt-2">
+              Das raízes às novas gerações.
+            </p>
+
+          </button>
+
+
+          <button
+            onclick="showPage('artists')"
+            class="glass rounded-2xl p-5
+                   text-left card-hover"
+          >
+
+            <span class="text-3xl">
+              🎤
+            </span>
+
+            <h3 class="font-black text-lg mt-5">
+              Artistas
+            </h3>
+
+            <p class="text-sm text-zinc-500 mt-2">
+              Nomes que marcaram o gênero.
+            </p>
+
+          </button>
+
+
+          <button
+            onclick="showPage('styles')"
+            class="glass rounded-2xl p-5
+                   text-left card-hover"
+          >
+
+            <span class="text-3xl">
+              🔊
+            </span>
+
+            <h3 class="font-black text-lg mt-5">
+              Estilos
+            </h3>
+
+            <p class="text-sm text-zinc-500 mt-2">
+              Conheça as diferentes vertentes.
+            </p>
+
+          </button>
+
+
+          <button
+            onclick="showPage('timeline')"
+            class="glass rounded-2xl p-5
+                   text-left card-hover"
+          >
+
+            <span class="text-3xl">
+              🕐
+            </span>
+
+            <h3 class="font-black text-lg mt-5">
+              Linha do tempo
+            </h3>
+
+            <p class="text-sm text-zinc-500 mt-2">
+              Veja como o som evoluiu.
+            </p>
+
+          </button>
+
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- =========================
+         HISTÓRIA
+    ========================== -->
+
+    <section id="page-history" class="page hide">
+
+      <div class="max-w-3xl mb-10">
+
+        <p class="text-lime font-bold text-sm">
+          HISTÓRIA
+        </p>
+
+        <h2 class="text-4xl sm:text-5xl font-black mt-2">
+          De onde veio o funk?
+        </h2>
+
+        <p class="text-zinc-400 mt-4 text-lg">
+          Uma viagem pelas influências, transformações
+          e movimentos que ajudaram a construir
+          o funk brasileiro.
+        </p>
+
+      </div>
+
+
+      <div class="grid lg:grid-cols-3 gap-5">
+
+        <article
+          class="lg:col-span-2
+                 glass rounded-3xl
+                 p-6 sm:p-8"
+        >
+
+          <div class="text-5xl mb-5">
+            🎚️
+          </div>
+
+          <h3 class="text-2xl font-black">
+            Das influências internacionais
+            à identidade brasileira
+          </h3>
+
+          <p class="text-zinc-400 leading-7 mt-4">
+
+            O funk brasileiro tem relação com
+            movimentos da música negra norte-americana,
+            especialmente o soul, o funk e a cultura
+            dos bailes.
+
+          </p>
+
+          <p class="text-zinc-400 leading-7 mt-4">
+
+            Ao chegar aos grandes centros urbanos
+            brasileiros, essas referências ganharam
+            novas batidas, linguagens e formas
+            de expressão.
+
+          </p>
+
+          <p class="text-zinc-400 leading-7 mt-4">
+
+            No Rio de Janeiro, os bailes e a cena
+            dos anos 1980 e 1990 foram fundamentais
+            para o desenvolvimento do funk carioca.
+
+          </p>
+
+          <p class="text-zinc-400 leading-7 mt-4">
+
+            Com o tempo, o gênero se espalhou por
+            outras regiões e passou a incorporar
+            características locais.
+
+          </p>
+
+          <p class="text-zinc-400 leading-7 mt-4">
+
+            Em São Paulo, diferentes cenas ajudaram
+            a consolidar vertentes como o funk
+            ostentação e, posteriormente, o mandelão.
+
+          </p>
+
+        </article>
+
+
+        <aside class="glass rounded-3xl p-6">
+
+          <h3 class="font-black text-xl">
+            Por que o funk importa?
+          </h3>
+
+          <div class="space-y-4 mt-6">
+
+            <div>
+
+              <span class="text-lime font-black">
+                01
+              </span>
+
+              <p class="font-bold mt-1">
+                Identidade
+              </p>
+
+              <p class="text-sm text-zinc-500">
+                Expressa experiências e linguagens
+                de diferentes comunidades.
+              </p>
+
+            </div>
+
+
+            <div>
+
+              <span class="text-pink font-black">
+                02
+              </span>
+
+              <p class="font-bold mt-1">
+                Cultura
+              </p>
+
+              <p class="text-sm text-zinc-500">
+                Influenciou dança, moda,
+                audiovisual e comportamento.
+              </p>
+
+            </div>
+
+
+            <div>
+
+              <span class="text-violet font-black">
+                03
+              </span>
+
+              <p class="font-bold mt-1">
+                Transformação
+              </p>
+
+              <p class="text-sm text-zinc-500">
+                Mudou com a tecnologia e ganhou
+                novas cenas e sonoridades.
+              </p>
+
+            </div>
+
+          </div>
+
+        </aside>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         ARTISTAS
+    ========================== -->
+
+    <section id="page-artists" class="page hide">
+
+      <div
+        class="flex flex-col md:flex-row
+               md:items-end justify-between
+               gap-5 mb-8"
+      >
+
+        <div>
+
+          <p class="text-lime font-bold text-sm">
+            ARTISTAS
+          </p>
+
+          <h2 class="text-4xl font-black mt-2">
+            Quem fez história
+          </h2>
+
+          <p class="text-zinc-400 mt-3">
+            Pesquise e conheça alguns nomes
+            importantes da cena.
+          </p>
+
+        </div>
+
+
+        <div class="relative w-full md:w-80">
+
+          <input
+            id="artistSearch"
+            oninput="renderArtists()"
+            placeholder="Buscar artista..."
+            class="w-full bg-white/5
+                   border border-white/10
+                   rounded-xl px-4 py-3
+                   outline-none
+                   focus:border-violet"
+          >
+
+          <span
+            class="absolute right-4 top-3.5"
+          >
+            ⌕
+          </span>
+
+        </div>
+
+      </div>
+
+
+      <div
+        id="artistGrid"
+        class="grid sm:grid-cols-2
+               lg:grid-cols-3 gap-5"
+      ></div>
+
+    </section>
+
+
+    <!-- =========================
+         ESTILOS
+    ========================== -->
+
+    <section id="page-styles" class="page hide">
+
+      <div class="max-w-3xl mb-8">
+
+        <p class="text-lime font-bold text-sm">
+          ESTILOS
+        </p>
+
+        <h2 class="text-4xl font-black mt-2">
+          Um gênero, muitas batidas
+        </h2>
+
+        <p class="text-zinc-400 mt-3">
+          As vertentes do funk brasileiro refletem
+          regiões, épocas e diferentes formas
+          de produção.
+        </p>
+
+      </div>
+
+
+      <div
+        id="styleGrid"
+        class="grid sm:grid-cols-2
+               lg:grid-cols-3 gap-5"
+      ></div>
+
+    </section>
+
+
+    <!-- =========================
+         LINHA DO TEMPO
+    ========================== -->
+
+    <section id="page-timeline" class="page hide">
+
+      <div class="max-w-3xl mb-10">
+
+        <p class="text-lime font-bold text-sm">
+          LINHA DO TEMPO
+        </p>
+
+        <h2 class="text-4xl font-black mt-2">
+          A evolução do som
+        </h2>
+
+      </div>
+
+
+      <div
+        class="max-w-3xl relative ml-2"
+      >
+
+        <div
+          class="absolute left-3
+                 top-0 bottom-0
+                 w-px bg-white/10"
+        ></div>
+
+
+        <div
+          id="timelineList"
+          class="space-y-8"
+        ></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         QUIZ
+    ========================== -->
+
+    <section id="page-quiz" class="page hide">
+
+      <div class="max-w-3xl mx-auto">
+
+        <div class="text-center mb-8">
+
+          <p class="text-lime font-bold text-sm">
+            QUIZ FUNKBR
+          </p>
+
+          <h2 class="text-4xl font-black mt-2">
+            Quanto você sabe sobre funk?
+          </h2>
+
+          <p class="text-zinc-400 mt-3">
+            Responda às perguntas e descubra
+            sua pontuação.
+          </p>
+
+        </div>
+
+
+        <div
+          id="quizBox"
+          class="glass rounded-3xl
+                 p-6 sm:p-10"
+        ></div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer class="border-t border-white/10 mt-12">
+
+    <div
+      class="max-w-7xl mx-auto
+             px-4 sm:px-6 py-8
+             flex flex-col sm:flex-row
+             justify-between gap-3
+             text-sm text-zinc-500"
+    >
+
+      <span>
+        © 2026 FunkBR — projeto educacional.
+      </span>
+
+      <span>
+        Feito para explorar a cultura
+        do funk brasileiro.
+      </span>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JavaScript -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>
